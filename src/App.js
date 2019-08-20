@@ -5,8 +5,9 @@ import { Provider } from "react-redux";
 
 import Create from './components/create.component';
 import Edit from './components/edit.component';
-import Index from './components/index.component';
+import ListFruit from './components/list-fruit.component';
 import Home from './components/home.component';
+import ListVeg from './components/list-veg.component';
 
 import store from "./store";
 
@@ -30,7 +31,16 @@ class App extends Component {
                     <Link to={'/create/vegetable'} className="nav-link">Create Vegetable</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to={'/index'} className="nav-link">List</Link>
+                    <Link to={'/listfruit'} className="nav-link">List Fruit</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={'/listveg'} className="nav-link">List Veg</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={'/listsalad'} className="nav-link">List Salad</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={'/create/salad'} className="nav-link">Create Salad</Link>
                   </li>
                 </ul>
               </div>
@@ -45,7 +55,10 @@ class App extends Component {
               <Route path='/create/fruit' render={() => <Create type={'fruit'} />} />
               <Route path='/create/vegetable' render={() => <Create type={'vegetable'} />} />
               <Route path='/edit/:id' component={Edit} />
-              <Route path='/index' component={Index} />
+              <Route path='/listfruit' component={ListFruit} />
+              <Route path='/listveg' component={ListVeg} />
+              <Route path='/listsalad' component={ListVeg} />
+              <Route path='/create/vegetable' render={() => <Create type={'vegetable'} />} />
             </Switch>
           </div>
         </Router>

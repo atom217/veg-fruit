@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchVegetables } from "../actions/vegetableActions";
-import TableRow from './TableRow';
+import RowVeg from './TableRow-veg';
 
-class Index extends Component {
+class ListVeg extends Component {
 
 	componentWillMount() {
 		this.props.fetchVegetables();
@@ -18,7 +18,7 @@ class Index extends Component {
 
 	tabRow() {
 		return this.props.vegetables.map(function (object, i) {
-			return <TableRow name={object.vegetable_name} quantity={object.vegetable_quantity} obj={object} key={i} />;
+			return <RowVeg name={object.vegetable_name} quantity={object.vegetable_quantity} obj={object} key={i} />;
 		});
 	}
 
@@ -43,15 +43,15 @@ class Index extends Component {
 	}
 }
 
-Index.propTypes = {
-	fetchFruits: PropTypes.func.isRequired,
-	fruits: PropTypes.array.isRequired,
-	newFruit: PropTypes.object
+ListVeg.propTypes = {
+	fetchVegetables: PropTypes.func.isRequired,
+	vegetables: PropTypes.array.isRequired,
+	newVegetable: PropTypes.object
 }
 
 const mapStateToProps = state => ({
-	vegetable: state.vegetables.items,
+	vegetables: state.vegetables.items,
 	newVegetable: state.vegetables.item
 });
 
-export default connect(mapStateToProps, { fetchVegetables })(Index);
+export default connect(mapStateToProps, { fetchVegetables })(ListVeg);

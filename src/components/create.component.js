@@ -73,7 +73,7 @@ class Create extends Component {
           </div>
           <div className="form-group">
             <input type="submit"
-              value="Save Fruit"
+              value="Save"
               className="btn btn-primary" />
           </div>
         </form>

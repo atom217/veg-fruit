@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Creates a S3 bucket, private bucket content, archive content to glacier everday
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${AWS::StackName}-test"
+      AccessControl: Private
+      LifecycleConfiguration:
+        Rules:
+        - Id: GlacierArchive
+          Status: 'Enabled'
+          ExpirationInDays: 2
+          Transition:
+            StorageClass: GLACIER
+            TransitionInDays: 1

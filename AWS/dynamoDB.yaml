@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Creates a S3 bucket, private bucket content, archive content to glacier everday
+Resources:
+  FruitTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "fruit_id"
+          AttributeType: "S"
+        - AttributeName: "fruit_name"
+          AttributeType: "S"  
+      KeySchema: 
+        - AttributeName: "fruit_id"
+          KeyType: "HASH"
+        - AttributeName: "fruit_name"
+          KeyType: "RANGE"
+      TableName: "Fruitspush"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1 
+  VegTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "vegetable_id"
+          AttributeType: "S"
+        - AttributeName: "vegetable_name"
+          AttributeType: "S"
+      KeySchema: 
+        - AttributeName: "vegetable_id"
+          KeyType: "HASH"
+        - AttributeName: "vegetable_name"
+          KeyType: "RANGE"
+      TableName: "Vegetablespush"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1 
+  SaladTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "salad_id"
+          AttributeType: "S"
+        - AttributeName: "salad_name"
+          AttributeType: "S"  
+      KeySchema: 
+        - AttributeName: "salad_id"
+          KeyType: "HASH"
+        - AttributeName: "salad_name"
+          KeyType: "RANGE"  
+      TableName: "Saladpush"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1          
+      

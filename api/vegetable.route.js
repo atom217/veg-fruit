@@ -2,11 +2,11 @@ const express = require('express');
 const vegetableRoutes = express.Router();
 
 // Require Vegetable model in our routes module
-let Vegetable = require('./vegetable.model');
+let Vegetables = require('./vegetable.model');
 
 // Defined store route
 vegetableRoutes.route('/add').post(function (req, res) {
-  let vegetable = new Vegetable(req.body);
+  let vegetable = new Vegetables(req.body);
   vegetable.save()
     .then(vegetable => {
       res.status(200).json({ 'vegetable': 'Vegetable in added successfully' });
@@ -19,7 +19,7 @@ vegetableRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 vegetableRoutes.route('/').get(function (req, res) {
-  Vegetable.find(function (err, vegetable) {
+  Vegetables.find(function (err, vegetable) {
     if (err) {
       return console.log(err);
     }
@@ -32,14 +32,14 @@ vegetableRoutes.route('/').get(function (req, res) {
 // Defined edit route
 vegetableRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
-  Vegetable.findById(id, function (err, vegetable) {
+  Vegetables.findById(id, function (err, vegetable) {
     res.json(vegetable);
   });
 });
 
 //  Defined update route
 vegetableRoutes.route('/update/:id').post(function (req, res) {
-  Vegetable.findById(req.params.id, function (err, vegetable) {
+  Vegetables.findById(req.params.id, function (err, vegetable) {
     if (!vegetable)
       res.status(404).send("data is not found");
     else {
@@ -58,7 +58,7 @@ vegetableRoutes.route('/update/:id').post(function (req, res) {
 
 // Defined delete | remove | destroy route
 vegetableRoutes.route('/delete/:id').get(function (req, res) {
-  Vegetable.findByIdAndRemove({ _id: req.params.id }, function (err, business) {
+  Vegetables.findByIdAndRemove({ _id: req.params.id }, function (err, business) {
     if (err) res.json(err);
     else res.json('Successfully removed');
   });

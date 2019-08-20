@@ -3,9 +3,9 @@ import axios from 'axios';
 
 export const fetchVegetables = () => dispatch => {
   axios.get('http://localhost:4000/vegetable')
-    .then(data => dispatch({
+    .then(veg => dispatch({
       type: FETCH_VEGETABLES,
-      payload: data.data,
+      payload: veg.data,
     }))
     .catch(function (error) {
       console.log(error);

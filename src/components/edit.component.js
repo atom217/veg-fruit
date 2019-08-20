@@ -68,7 +68,7 @@ class Edit extends Component {
 					</div>
 					<div className="form-group">
 						<input type="submit"
-							value="Update Fruit"
+							value="Update"
 							className="btn btn-primary" />
 					</div>
 				</form>
