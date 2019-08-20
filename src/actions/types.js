@@ -1,0 +1,4 @@
+export const FETCH_FRUITS = 'FETCH_FRUITS';
+export const NEW_FRUIT = 'NEW_FRUIT';
+export const FETCH_VEGETABLES = 'FETCH_VEGETABLES';
+export const NEW_VEGETABLE = 'NEW_VEGETABLE';
